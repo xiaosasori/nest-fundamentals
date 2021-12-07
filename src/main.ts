@@ -14,6 +14,11 @@ async function bootstrap() {
       // instead of being just a shape of the class
       // also transform request parameters to the type of we defined
       transform: true,
+      // transform type on dto fields instead of
+      // explicitly using decorator like @Type(() => Number)
+      transformOptions: {
+        enableImplicitConversion: true,
+      },
     }),
   );
   await app.listen(3000);
