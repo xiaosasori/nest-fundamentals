@@ -6,8 +6,7 @@ import { CoffeesModule } from './coffees/coffees.module';
 import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
-import Joi from 'joi';
-import appConfig from './config/app.config';
+import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [
@@ -26,16 +25,11 @@ import appConfig from './config/app.config';
         synchronize: true,
       }),
     }),
-    ConfigModule.forRoot({
-      validationSchema: Joi.object({
-        DATABSE_HOST: Joi.required(),
-        DATABASE_PORT: Joi.number().default(5432),
-      }),
-      load: [appConfig],
-    }),
+    ConfigModule.forRoot(),
     CoffeesModule,
     CoffeeRatingModule,
     DatabaseModule,
+    CommonModule,
   ],
   controllers: [AppController],
   providers: [AppService],

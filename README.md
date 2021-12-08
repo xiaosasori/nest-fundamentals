@@ -10,12 +10,15 @@
 - Revert: `npx typeorm migration:revert`
 - `build` project -> `generate` migration -> `run` migration
 
-## Providers 
+## Providers
+
 ### Scope
-- `transient` providers are **NOT** shared across consumers. Each consumer that injects a transient provider will receive a new, dedicated instance of that provider. 
+
+- `transient` providers are **NOT** shared across consumers. Each consumer that injects a transient provider will receive a new, dedicated instance of that provider.
 - `request` scope provides a new instance of the provider exclusively for each incoming request.
 
 ### Custom
+
 - Custom providers are useful when:
   - We are creating a custom instance of our provider instead of having Nest instantiate the class for us
   - We want to use a Strategy Pattern in which we can provide an abstract class and interchange the real implementation
@@ -29,6 +32,24 @@
 - The `useFactory` syntax (custom providers) is useful when we want to:
   - Create providers dynamically based on other providers
   - Delay the entire bootstrap process until one or more asynchronous tasks have completed (async functions)
+
+## Building Blocks (Exception filters, Pipes, Guards, Interceptors)
+
+- Can be
+  - **Globally**-scoped
+  - **Controller**-scoped
+  - **Method**-scoped
+  - **Param**-scoped availale to Pipes only
+- `Exception Filters` handle and process unhandled exceptions
+- `Pipes`
+  - Transform input data to the desired output
+  - Evaluate & validate input data
+- `Guards` determine whether a given request meets certain conditions
+- `Interceptors`
+  - Bind extra logic _before_ or _after_ method execution
+  - Transform the result returned from a method
+  - Depending on specific conditions can completely override a method
+
 ## Installation
 
 ```bash
