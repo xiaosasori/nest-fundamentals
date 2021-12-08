@@ -6,9 +6,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(
     new ValidationPipe({
-      // whitelist is used to remove unknown properties in request's payload
+      // prevent malicious data from being sent into our Requests
       whitelist: true,
-      // throw error if there're unknown props
+      // same as whitelist, but throw an error
       forbidNonWhitelisted: true,
       // transform dto object to instance of the class
       // instead of being just a shape of the class

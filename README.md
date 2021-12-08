@@ -10,6 +10,25 @@
 - Revert: `npx typeorm migration:revert`
 - `build` project -> `generate` migration -> `run` migration
 
+## Providers 
+### Scope
+- `transient` providers are **NOT** shared across consumers. Each consumer that injects a transient provider will receive a new, dedicated instance of that provider. 
+- `request` scope provides a new instance of the provider exclusively for each incoming request.
+
+### Custom
+- Custom providers are useful when:
+  - We are creating a custom instance of our provider instead of having Nest instantiate the class for us
+  - We want to use a Strategy Pattern in which we can provide an abstract class and interchange the real implementation
+  - We need to delay the bootstrap process until one or more asynchronous tasks have completed
+- The "useValue" syntax (custom providers) is useful when:
+  - We want to bind an external library into the Nest container
+  - We want to register & inject a constant value
+  - We want to replace a real implementation of a service with a mock object
+- Use `@Inject()` as parameter decorator to inject a custom provider into a class
+- The `useClass` syntax (custom providers) is useful when we want to **dynamically** determine a class that a token should resolve to
+- The `useFactory` syntax (custom providers) is useful when we want to:
+  - Create providers dynamically based on other providers
+  - Delay the entire bootstrap process until one or more asynchronous tasks have completed (async functions)
 ## Installation
 
 ```bash
