@@ -8,7 +8,7 @@ export class CreateCoffeeDto {
 
   @ApiProperty({ description: 'The brand of a coffee' })
   @IsString()
-  readonly branch: string;
+  readonly brand: string;
 
   // `each: true` indicates that expected value is an array of string
   @ApiProperty({ example: [] })

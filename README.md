@@ -50,6 +50,8 @@
   - Transform the result returned from a method
   - Depending on specific conditions can completely override a method
 
+## Testing
+- Test a specific file `npm run test:watch -- coffees.service`
 ## Installation
 
 ```bash
